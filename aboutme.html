@@ -1,0 +1,486 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>About Me - Elias Dohmen</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript>
+        <link rel="stylesheet" href="assets/css/noscript.css" />
+    </noscript>
+    <link rel="icon" sizes="any" type="image/svg+xml" href="/images/logos/fav.svg">
+    <link rel="alternate icon" type="image/png" href="fav.png">
+    <style>
+        .skills-bar {
+            margin: 1.5em 0;
+        }
+
+        .skill-label {
+            color: #eee;
+            font-weight: bold;
+            margin-bottom: 0.2em;
+        }
+
+        .bar-bg {
+            background: #222;
+            border-radius: 8px;
+            height: 18px;
+            width: 100%;
+            margin-bottom: 0.7em;
+        }
+
+        .bar-fill {
+            height: 18px;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #00bcd4 60%, #8bc34a 100%);
+        }
+
+        .timeline {
+            position: relative;
+            margin: 2.5em 0 2em 0;
+            min-height: 350px;
+            padding: 0;
+        }
+
+        .timeline-center-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: #bbb;
+            transform: translateX(-50%);
+            z-index: 1;
+            border-radius: 2px;
+        }
+
+        .timeline-dot-moving {
+            position: absolute;
+            left: 50%;
+            width: 22px;
+            height: 22px;
+            background: #00bcd4;
+            border: 3px solid #fff;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+            z-index: 2;
+            transform: translate(-50%, 0);
+            transition: top 0.25s cubic-bezier(.4, 2, .6, 1), background 0.2s;
+        }
+
+        .timeline-entry {
+            position: relative;
+            width: 48%;
+            margin-bottom: 3.5em;
+            min-height: 90px;
+            z-index: 2;
+            opacity: 0.5;
+            transition: opacity 0.2s, filter 0.2s;
+            filter: grayscale(0.4);
+        }
+
+        .timeline-entry.alt-left {
+            left: 0;
+            text-align: right;
+            justify-content: flex-end;
+            display: flex;
+        }
+
+        .timeline-entry.alt-right {
+            left: 52%;
+            text-align: left;
+            justify-content: flex-start;
+            display: flex;
+        }
+
+        .timeline-entry.active {
+            opacity: 1;
+            filter: none;
+        }
+
+        .timeline-entry-content {
+            background: rgba(0, 0, 0, 0.55);
+            border-radius: 12px;
+            padding: 1.2em 1.5em;
+            color: #fff;
+            box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.10);
+            text-align: left !important;
+        }
+
+        .timeline-entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.2em;
+            gap: 1em;
+        }
+
+        .timeline-entry-year {
+            color: darkcyan;
+            font-weight: 600;
+            font-size: 1.08em;
+            white-space: nowrap;
+        }
+
+        .timeline-entry-institution {
+            color: #8e44ad;
+            font-weight: 600;
+            font-size: 1.08em;
+            white-space: nowrap;
+        }
+
+        .timeline-entry-position {
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 0.2em;
+        }
+
+        .timeline-entry-details {
+            color: #bbb;
+            margin: 0.2em 0 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .timeline-entry-details li {
+            color: #bbb;
+            margin: 0.1em 0 0.1em 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .timeline-entry-details li:nth-child(2n) {
+            color: #537b9c;
+        }
+
+        .timeline-entry-details li .thesis-title {
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body class="landing is-preload"
+    style="background: url('images/banner.jpg') no-repeat center center fixed; background-size: cover;">
+    <div id="page-wrapper">
+        <header id="header" class="alt">
+            <h1><a href="index.html">Elias Dohmen</a></h1>
+            <nav id="nav">
+                <ul>
+                    <li class="special">
+                        <a href="#menu" class="menuToggle"><span>Menu</span></a>
+                        <div id="menu">
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="aboutme.html">About Me</a></li>
+                                <li><a href="research.html">My Research</a></li>
+                                <li><a href="tools.html">Tools</a></li>
+                                <li><a href="sciencecomm.html">Science Communication</a></li>
+                                <li><a href="teaching.html">Teaching</a></li>
+                                <li><a href="publications.html">Publications</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <section class="wrapper style2 special"
+            style="background: rgba(0,0,0,0.65); border-radius: 18px; box-shadow: 0 2px 16px 0 rgba(0,0,0,0.18); margin-top: 32px; margin-bottom: 32px;">
+            <div class="inner" style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 2.5em;">
+                <div style="flex:0 0 180px; text-align:center;">
+                    <img src="images/EDohmen_profilepic2.jpg" alt="Elias Dohmen"
+                        style="width:160px; border-radius:50%; box-shadow:0 2px 12px 0 rgba(0,0,0,0.18); margin-bottom:1em;" />
+                </div>
+                <div style="flex:1 1 320px; min-width:220px;">
+                    <header class="major">
+                        <h2>About Me</h2>
+                    </header>
+                    <p style="color:#eee;">
+                        I am a bioinformatician and evolutionary biologist passionate about building tools that bridge
+                        biology and computation. My research focuses mainly on large-scale comparative OMICS and the
+                        development of open, reproducible software for the life sciences.
+                        I enjoy collaborating across disciplines, communicating science, and mentoring the next
+                        generation of researchers.
+                    </p>
+                    <p style="color:#eee;">
+                        My work is driven by curiosity, a love for problem-solving, and a commitment to making
+                        scientific data accessible and understandable. I believe that clear communication and robust,
+                        reusable code are essential for advancing discovery.
+                    </p>
+                    <p style="color:#eee;">
+                        You can check out my <a href="research.html" style="color:darkcyan;">research
+                            projects</a>, explore the <a href="tools.html" style="color:darkcyan;">tools</a> I develop,
+                        see my approach to <a href="sciencecomm.html" style="color:darkcyan;">science communication</a>,
+                        and discover my <a href="teaching.html" style="color:darkcyan;">teaching</a> philosophy to learn
+                        more about me.
+                    </p>
+                    <hr>
+                    <div style="display: flex; justify-content: center; gap: 2em; margin-bottom: 1.5em;">
+                        <a href="#skills-section" class="button special small" style="min-width: 160px;">Skills</a>
+                        <a href="#experience-section" class="button special small"
+                            style="min-width: 160px;">Experience</a>
+                        <a href="#education-section" class="button special small"
+                            style="min-width: 160px;">Education</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="wrapper style3 special" style="background: transparent;" id="skills-section">
+            <div class="inner">
+                <header>
+                    <h2>Skills</h2>
+                </header>
+                <div class="skills-bar">
+                    <div class="skill-label">Python (>10 years)</div>
+                    <div class="bar-bg">
+                        <div class="bar-fill" style="width: 96%;"></div>
+                    </div>
+                    <div class="skill-label">Linux (>10 years)</div>
+                    <div class="bar-bg">
+                        <div class="bar-fill"
+                            style="width: 94%; background: linear-gradient(90deg, #8bc34a 60%, #00bcd4 100%);"></div>
+                    </div>
+                    <div class="skill-label">C++ (>5 years)</div>
+                    <div class="bar-bg">
+                        <div class="bar-fill"
+                            style="width: 72%; background: linear-gradient(90deg, #673ab7 60%, #00bcd4 100%);"></div>
+                    </div>
+                    <div class="skill-label">Bash/Shell (>10 years)</div>
+                    <div class="bar-bg">
+                        <div class="bar-fill"
+                            style="width: 89%; background: linear-gradient(90deg, #607d8b 60%, #00bcd4 100%);"></div>
+                    </div>
+                    <div class="skill-label">Snakemake (4 years)</div>
+                    <div class="bar-bg">
+                        <div class="bar-fill"
+                            style="width: 69%; background: linear-gradient(90deg, #ff9800 60%, #00bcd4 100%);"></div>
+                    </div>
+                    <div class="skill-label">Docker (1 year)</div>
+                    <div class="bar-bg">
+                        <div class="bar-fill"
+                            style="width: 65%; background: linear-gradient(90deg, #00bcd4 60%, #607d8b 100%);"></div>
+                    </div>
+                    <div class="skill-label">HPC with Slurm (>10 years; usage and system administration)</div>
+                    <div class="bar-bg">
+                        <div class="bar-fill"
+                            style="width: 87%; background: linear-gradient(90deg, #00bcd4 60%, #ff9800 100%);"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="wrapper style2 special"
+            style="background: rgba(0,0,0,0.65); border-radius: 18px; box-shadow: 0 2px 16px 0 rgba(0,0,0,0.18); margin-top: 32px; margin-bottom: 32px;"
+            id="experience-section">
+            <div class="inner">
+                <header>
+                    <h2>Experience</h2>
+                </header>
+                <div class="timeline" id="timeline-experience">
+                    <div class="timeline-center-line"></div>
+                    <div class="timeline-dot-moving" id="timeline-dot-moving-experience"></div>
+                    <!-- 2022-2025 (left) -->
+                    <div class="timeline-entry alt-left" id="exp5">
+                        <div class="timeline-entry-content">
+                            <div class="timeline-entry-header">
+                                <span class="timeline-entry-year">2022 - 2025</span>
+                                <span class="timeline-entry-institution">University of Münster</span>
+                            </div>
+                            <div class="timeline-entry-position">Postdoctoral Researcher</div>
+                            <ul class="timeline-entry-details">
+                                <li>Genomic Basis of Evolutionary Innovations (GEvol)</li>
+                                <li>Priority Programme (SPP 2349) funded by German Science Foundation (DFG)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- 2020-2022 (right) -->
+                    <div class="timeline-entry alt-right" id="exp4">
+                        <div class="timeline-entry-content">
+                            <div class="timeline-entry-header">
+                                <span class="timeline-entry-year">2020 - 2022</span>
+                                <span class="timeline-entry-institution">University of Münster</span>
+                            </div>
+                            <div class="timeline-entry-position">Postdoctoral Researcher</div>
+                            <ul class="timeline-entry-details">
+                                <li>The hallmarks of ageing in social insects</li>
+                                <li>DFG funded So-long research unit, FOR 2281</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- 2018-2019 (left) -->
+                    <div class="timeline-entry alt-left" id="exp2">
+                        <div class="timeline-entry-content">
+                            <div class="timeline-entry-header">
+                                <span class="timeline-entry-year">2018 - 2019</span>
+                                <span class="timeline-entry-institution">University of Münster</span>
+                            </div>
+                            <div class="timeline-entry-position">Research fellow</div>
+                            <ul class="timeline-entry-details">
+                                <li>Bioinformatic support for genome projects</li>
+                                <li>System administration of a Linux based HPC with slurm</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- 2015-2020 (right) -->
+                    <div class="timeline-entry alt-right" id="exp3">
+                        <div class="timeline-entry-content">
+                            <div class="timeline-entry-header">
+                                <span class="timeline-entry-year">2015 - 2020</span>
+                                <span class="timeline-entry-institution">University of Münster</span>
+                            </div>
+                            <div class="timeline-entry-position">PhD Student</div>
+                            <ul class="timeline-entry-details">
+                                <li>Software and bioinformatic pipeline development (Python, C++, Bash)</li>
+                                <li>System administration of a Linux based HPC with slurm</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- 2015-2018 (left) -->
+                    <div class="timeline-entry alt-left" id="exp1">
+                        <div class="timeline-entry-content">
+                            <div class="timeline-entry-header">
+                                <span class="timeline-entry-year">2015 - 2018</span>
+                                <span class="timeline-entry-institution">Westphalian UAS</span>
+                            </div>
+                            <div class="timeline-entry-position">Research Fellow</div>
+                            <ul class="timeline-entry-details">
+                                <li>Teaching: "Introduction to Informatics" and
+                                    "Bioinformatics"
+                                </li>
+                                <li>Research: Protein Domains as Molecular Markers</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="wrapper style2 special"
+            style="background: rgba(0,0,0,0.65); border-radius: 18px; box-shadow: 0 2px 16px 0 rgba(0,0,0,0.18); margin-top: 32px; margin-bottom: 32px;"
+            id="education-section">
+            <div class="inner">
+                <header>
+                    <h2>Education</h2>
+                </header>
+                <div class="timeline" id="timeline-education">
+                    <div class="timeline-center-line"></div>
+                    <div class="timeline-dot-moving" id="timeline-dot-moving-education"></div>
+                    <div class="timeline-entry alt-left" id="edu1">
+                        <div class="timeline-entry-content">
+                            <div class="timeline-entry-header">
+                                <span class="timeline-entry-year">2015 - 2020</span>
+                                <span class="timeline-entry-institution">University of Münster</span>
+                            </div>
+                            <div class="timeline-entry-position">PhD (Dr. rer. nat.) in Bioinformatics</div>
+                            <ul class="timeline-entry-details">
+                                <li>Thesis: <em class="thesis-title">Protein Domains as Molecular Markers for Large
+                                        Scale Sequence Analysis</em>
+                                </li>
+                                <li>Honors: summa cum laude</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-entry alt-right" id="edu2">
+                        <div class="timeline-entry-content">
+                            <div class="timeline-entry-header">
+                                <span class="timeline-entry-year">2012 - 2015</span>
+                                <span class="timeline-entry-institution">University of Münster</span>
+                            </div>
+                            <div class="timeline-entry-position">Master of Science in Biosciences</div>
+                            <ul class="timeline-entry-details">
+                                <li>Thesis: <em class="thesis-title">The Evolutionary Origin of Novel Enzyme
+                                        Functions</em>
+                                </li>
+                                <li>Special Study Program "Evolution and Biocomplexity"</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-entry alt-left" id="edu3">
+                        <div class="timeline-entry-content">
+                            <div class="timeline-entry-header">
+                                <span class="timeline-entry-year">2009 - 2012</span>
+                                <span class="timeline-entry-institution">University of Münster</span>
+                            </div>
+                            <div class="timeline-entry-position">Bachelor of Science in Biosciences</div>
+                            <ul class="timeline-entry-details">
+                                <li>Thesis: <em class="thesis-title">Studies on nutrient and thermal stress in one
+                                        specific clone of Daphnia pulex with consideration of gene families via in
+                                        silico analysis</em>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer id="footer"
+            style="background: rgba(0,0,0,0.65); border-radius: 18px; box-shadow: 0 2px 16px 0 rgba(0,0,0,0.18);">
+            <ul class="icons">
+                <li><a href="https://bsky.app/profile/drdomain.bsky.social" target="_blank" class="icon"><img
+                            src="images/logos/bluesky.svg" style="width:38px;position:relative;top:-4px;" /><span
+                            class="label">Bluesky</span></a></li>
+                <li><a href="https://orcid.org/0000-0002-7203-2314" target="_blank" class="icon"><img
+                            src="images/logos/orcid.svg" style="width:42px;" /><span class="label">ORCiD</span></a></li>
+                <li><a href="https://scholar.google.com/citations?hl=en&user=O5XMvskAAAAJ" target="_blank"
+                        class="icon"><img src="images/logos/google-scholar.png" style="width:50px;" /><span
+                            class="label">Google scholar</span></a></li>
+                <li><a href="https://github.com/EDohmen" target="_blank" class="icon"><img
+                            src="images/logos/github-mark-white.svg"
+                            style="width:42px;position:relative;top:-1px;" /><span class="label">GitHub</span></a></li>
+            </ul>
+            <ul class="copyright">
+                <li style="font-size:smaller;opacity:0.8;">Made with 🤍 by Dr. Domain | <a href="https://html5up.net"
+                        target="_blank" style="border:none;;">HTML5UP</a></li><br />
+            </ul>
+        </footer>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Timeline: moving dot and highlight logic for multiple timelines
+        function setupTimeline(timelineId, dotId) {
+            const entries = Array.from(document.querySelectorAll(`#${timelineId} .timeline-entry`));
+            const timeline = document.getElementById(timelineId);
+            const movingDot = document.getElementById(dotId);
+            function updateTimeline() {
+                const viewportCenter = window.innerHeight / 2;
+                let minDist = Infinity, activeIdx = 0;
+                entries.forEach((entry, idx) => {
+                    const rect = entry.getBoundingClientRect();
+                    const entryCenter = rect.top + rect.height / 2;
+                    const dist = Math.abs(entryCenter - viewportCenter);
+                    if (dist < minDist) {
+                        minDist = dist;
+                        activeIdx = idx;
+                    }
+                });
+                entries.forEach((entry, idx) => {
+                    if (idx === activeIdx) {
+                        entry.classList.add('active');
+                    } else {
+                        entry.classList.remove('active');
+                    }
+                });
+                // Move the dot to the center of the active entry, relative to the timeline container
+                const activeEntry = entries[activeIdx];
+                const timelineRect = timeline.getBoundingClientRect();
+                const entryRect = activeEntry.getBoundingClientRect();
+                const entryCenterY = entryRect.top + entryRect.height / 2 - timelineRect.top;
+                movingDot.style.top = `${entryCenterY - 11}px`;
+                movingDot.style.background = '#00bcd4';
+            }
+            if (timeline && movingDot && entries.length) {
+                window.addEventListener('scroll', updateTimeline);
+                window.addEventListener('resize', updateTimeline);
+                setTimeout(updateTimeline, 300);
+            }
+        }
+        setupTimeline('timeline-experience', 'timeline-dot-moving-experience');
+        setupTimeline('timeline-education', 'timeline-dot-moving-education');
+    </script>
+</body>
+
+</html>
