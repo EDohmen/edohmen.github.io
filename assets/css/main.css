@@ -2159,6 +2159,11 @@ input, select, textarea {
 			line-height: inherit;
 		}
 
+		.icon.fa-envelope:before {
+			position: relative;
+			top: -0.3em;
+		}
+
 		.icon.solid:before {
 			font-weight: 900;
 		}
